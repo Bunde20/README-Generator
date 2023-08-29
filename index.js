@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquierer = require('inquirer');
+const MarkDown = require('./utils/generateMarkdown')
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -44,6 +45,8 @@ const questions = [
         message: "What license is being used?"
     }
 ];
+console.log(questions);
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
