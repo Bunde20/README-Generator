@@ -1,32 +1,46 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-  const badge = {
-    isc: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'
+//Creates a license badge based on which license is selected by the user
+function renderLicenseBadge(data) {
+  if(data.license === "None") {
+    return "" //Returns empty string if user selects none
+  } else if(data.license === "MIT") {
+    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+  } else if(data.license === "Apache") {
+    return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+  } else if(data.license === "ISC") {
+    return `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`
   }
-  return badge[license];
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// Returns the license link on the page if one is selected, if none, it will return an empty string
+function renderLicenseLink(data) {
+  if(data.license !== "None") {
+    return `- [License](#License)`
+  } else {
+    return ""
+  }
+}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// Creates a license section with link on the page, if there is no license, it will return an empty string
+function renderLicenseSection(data) {
+  if(data.license !== "None"){
+    return `## License
+Licensed with the ${renderLicenseBadge(data)} license`
+  } else {
+    return ''
+  }
+}
 
-// TODO: Create a function to generate markdown for README
+// Creates a function to generate a markdown for the README
 function generateMarkdown(data) {
-  return `
-# ${data.title}
+  return `# ${data.title}
 
 ## Table of Contents
-- [Project Description](#Decription)
-- [Usage](#Usage)
-- [Contributing](#Contributing)
-- [Installation](#Installation)
-- [Question](#Questions)
-- [License](#License)
+- [Project Description](#description)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Installation](#installation)
+- [Question](#questions)
+${renderLicenseLink(data)}
 
 ## Description
 ${data.description}
@@ -41,10 +55,10 @@ ${data.installation}
 ${data.contributing}
 
 ## Questions
-${data.questions}
+Feel free to email me at: ${data.contact}
+Here is my GitHub Profile: https://github.com/${data.github}
 
-## License
-${data.license}
+${renderLicenseSection(data)}
 `;
 }
 
