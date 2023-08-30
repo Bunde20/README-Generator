@@ -44,7 +44,7 @@ const questions = [
     type: "list",
     name: "license",
     message: "What license is being used?",
-    choices: ["None", "MIT", "Apache"]
+    choices: ["None", "MIT", "Apache", "ISC"]
   },
 ];
 
