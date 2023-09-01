@@ -14,7 +14,7 @@ function renderLicenseBadge(data) {
 // Returns the license link on the page if one is selected, if none, it will return an empty string
 function renderLicenseLink(data) {
   if(data.license !== "None") {
-    return `- [License](#License)`
+    return `- [License](#license)`
   } else {
     return ""
   }
